@@ -1,0 +1,14 @@
+*.a
+*.o
+*.d
+*.iso
+
+k/k
+iso/
+
+hunter
+perrod
+pong
+skate
+vaders
+yakanoid
