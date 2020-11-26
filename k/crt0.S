@@ -42,7 +42,10 @@ k_entry:
 	lea end_stack, %esp
 	push %ebx	/* multiboot info */
 	push %eax	/* magic */
+    mov %esp, stack_space
 	call k_main	/* kernel entry point */
+    hlt
+
 .Lend:
 	jmp .Lend
 	.size k_entry, . - k_entry

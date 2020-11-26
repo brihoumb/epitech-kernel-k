@@ -24,10 +24,15 @@
 
 #include <k/kstd.h>
 
+#include "gdt.h"
 #include "multiboot.h"
 
 void k_main(unsigned long magic, multiboot_info_t *info)
 {
+    initterm();
+    put("Initializing system...\n");
+    gdt_install();
+
 	(void)magic;
 	(void)info;
 
