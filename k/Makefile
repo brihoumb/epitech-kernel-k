@@ -36,10 +36,15 @@ DEPS = $(OBJS:.o=.d)
 
 all: $(TARGET)
 
-$(TARGET): CPPFLAGS += -MMD -Iinclude -I ../libs/libc/include/
+$(TARGET): CPPFLAGS += -MMD -Iinclude -I ../libs/libc/include/ -I ../libs/libk/include/
 $(TARGET): CFLAGS += $(K_EXTRA_CFLAGS)
+<<<<<<< HEAD
 $(TARGET): LDFLAGS += -Wl,-Tk.lds -O2
 $(TARGET): LDLIBS = -L../libs/libc -lc
+=======
+$(TARGET): LDFLAGS += -Wl,-Tk.lds
+$(TARGET): LDLIBS = -L../libs/libc -lc -L../libs/libk -lk
+>>>>>>> 727b438... pls I just wanna kill myself
 $(TARGET): $(OBJS)
 
 install: $(TARGET)

@@ -3,7 +3,7 @@
 
 #include <k/kstd.h>
 
-int write(const void *s, size_t length);
+//int write(const void *s, size_t length);
 void *sbrk(ssize_t increment);
 int getkey(void);
 unsigned long gettick(void);

@@ -23,19 +23,25 @@
  */
 
 #include <k/kstd.h>
-
-#include "gdt.h"
+//#include <kstd.h>
 #include "multiboot.h"
+#include <gdt.h>
+#include <stdio.h>
+#include "../libs/libk/include/stdlib.h"
+#include <string.h>
 
 void k_main(unsigned long magic, multiboot_info_t *info)
 {
-    initterm();
-    put("Initializing system...\n");
-    gdt_install();
-
+	write("test\r\n", 6);
+	gdt_install();
+	printf("GDT finally installer biatch\n");
 	(void)magic;
 	(void)info;
 
+	char *topkek = malloc(1000);
+	printf("GDT finally installer biatch 2\n");
+	topkek = strcpy(topkek, "AAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\r\n\0");
+	printf("GDT finally installer biatch 3\n");
 	char star[4] = "|/-\\";
 	char *fb = (void *)0xb8000;
 

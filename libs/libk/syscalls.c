@@ -73,12 +73,12 @@ static inline u32 syscall3(int syscall_nb, u32 ebx, u32 ecx, u32 edx)
 
 	return res;
 }
-
+/*
 int write(const void *s, size_t length)
 {
 	return ((int)syscall2(SYSCALL_WRITE, (u32)s, length));
 }
-
+*/
 void *sbrk(ssize_t increment)
 {
 	return ((void *)syscall1(SYSCALL_SBRK, increment));
