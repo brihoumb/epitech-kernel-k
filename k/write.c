@@ -1,4 +1,4 @@
-#include "../../k/io.h"
+#include "io.h"
 
 #define COM1 0x3F8
 

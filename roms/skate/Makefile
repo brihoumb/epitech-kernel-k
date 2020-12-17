@@ -21,31 +21,39 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-include ../config.mk
 
-TARGET	= k
-OBJS	= \
-	  crt0.o \
-	  k.o \
-	  libvga.o \
-	  list.o \
-	  memory.o \
-	  write.o \
+TARGET	  = skate
+OBJS	  = \
+	    gfx.o \
+	    park.o \
+	    skate.o \
+	    skater.o \
 
-DEPS = $(OBJS:.o=.d)
+ROM_TITLE = "skate"
+ROM_FILES = \
+	    res/box.bmp \
+	    res/boxup.bmp \
+	    res/crash.bmp \
+	    res/flip1.bmp \
+	    res/flip2.bmp \
+	    res/flip3.bmp \
+	    res/flip4.bmp \
+	    res/flip5.bmp \
+	    res/logo.bmp \
+	    res/rail.bmp \
+	    res/rotate1.bmp \
+	    res/rotate2.bmp \
+	    res/rotate3.bmp \
+	    res/rotate4.bmp \
+	    res/rotate5.bmp \
+	    res/skater1.bmp \
+	    res/skater2.bmp \
+	    res/skater3.bmp \
+	    res/skater4.bmp \
+	    res/skater5.bmp \
+	    res/skater6.bmp \
+	    res/skaterup.bmp \
+	    res/slide1.bmp \
+	    res/slide2.bmp \
 
-all: $(TARGET)
-
-$(TARGET): CPPFLAGS += -MMD -Iinclude -I ../libs/libc/include/
-$(TARGET): CFLAGS += $(K_EXTRA_CFLAGS)
-$(TARGET): LDFLAGS += -Wl,-Tk.lds
-$(TARGET): LDLIBS = -L../libs/libc -lc
-$(TARGET): $(OBJS)
-
-install: $(TARGET)
-	$(INSTALL) $(TARGET) $(INSTALL_ROOT)/$(TARGET)
-
-clean:
-	$(RM) $(OBJS) $(DEPS) $(TARGET)
-
--include $(DEPS)
+include ../roms.mk

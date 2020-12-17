@@ -41,7 +41,6 @@ OBJS	= \
 	  strncmp.o \
 	  strncpy.o \
 	  strnlen.o \
-	  write.o \
 
 DEPS = $(OBJS:.o=.d)
 

@@ -21,31 +21,18 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-include ../config.mk
 
-TARGET	= k
-OBJS	= \
-	  crt0.o \
-	  k.o \
-	  libvga.o \
-	  list.o \
-	  memory.o \
-	  write.o \
+TARGET	  = yakanoid
+OBJS	  = yakanoid.o
+ROM_TITLE = "yakanoid"
+ROM_FILES = \
+	    res/ball.bmp \
+	    res/bar.bmp \
+	    res/blue.bmp \
+	    res/green.bmp \
+	    res/red.bmp \
+	    res/yaka2008.bmp \
+	    res/yaka2009.bmp \
+	    res/yaka.bmp \
 
-DEPS = $(OBJS:.o=.d)
-
-all: $(TARGET)
-
-$(TARGET): CPPFLAGS += -MMD -Iinclude -I ../libs/libc/include/
-$(TARGET): CFLAGS += $(K_EXTRA_CFLAGS)
-$(TARGET): LDFLAGS += -Wl,-Tk.lds
-$(TARGET): LDLIBS = -L../libs/libc -lc
-$(TARGET): $(OBJS)
-
-install: $(TARGET)
-	$(INSTALL) $(TARGET) $(INSTALL_ROOT)/$(TARGET)
-
-clean:
-	$(RM) $(OBJS) $(DEPS) $(TARGET)
-
--include $(DEPS)
+include ../roms.mk
