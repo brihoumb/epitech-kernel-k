@@ -22,23 +22,27 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <stdio.h>
 #include <k/kstd.h>
+#include <k/kstack.h>
 
 #include "multiboot.h"
 
 void k_main(unsigned long magic, multiboot_info_t *info)
 {
-	(void)magic;
 	(void)info;
-
+	(void)magic;
 	char star[4] = "|/-\\";
 	char *fb = (void *)0xb8000;
 
-	write("test\r\n", 6);
-	for (unsigned i = 0; ; ) {
+	init_gdt();
+	switch_protect_mode();
+	init_idt();
+	init_pic();
+	init_timer();
+	for (unsigned i = 0;;) {
 		*fb = star[i++ % 4];
 	}
-
 	for (;;)
 		asm volatile ("hlt");
 }

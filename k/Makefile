@@ -24,13 +24,19 @@
 include ../config.mk
 
 TARGET	= k
-OBJS	= \
+OBJS	= k.o \
+	  gdt.o \
+	  idt.o \
+	  pic.o \
 	  crt0.o \
-	  k.o \
-	  libvga.o \
 	  list.o \
-	  memory.o \
+	  timer.o \
 	  write.o \
+	  getkey.o \
+	  libvga.o \
+	  memory.o \
+	  idt_asm.o \
+
 
 DEPS = $(OBJS:.o=.d)
 
